@@ -75,9 +75,26 @@
 				NSID
 			</label>
 			<input type="text" name="people_nsid" id="people_nsid"
-				value="{$people.people_nsid}" pattern="[a-zA-Z][a-zA-Z][a-zA-Z][0-9][0-9][0-9]">
+				value="{$people.people_nsid}">
 				<!-- I don't know why pattern="[a-zA-Z]{3}[0-9]{3} doesn't work" -->
+				<div id="nsid_check_result"></div>
 		</div>
+
+		<div id="people_password-container" class="field f_100">
+			<label for="people_password">
+				Password
+			</label>
+			<input type="password" name="people_password" id="people_password">
+			<div id="password_check_result"></div>	
+		</div>
+
+		<div id="people_repassword-container" class="field f_100">
+			<label for="people_repassword">
+				Confirm Password
+			</label>
+   			<input type="repassword" name="people_repassword" id="people_repassword">
+			<div id="repassword_check_result"></div>    
+    	</div>
 
 		<div id="people_group-container" class="field f_100">
 			<label for="people_group">
@@ -195,11 +212,21 @@
 		</div>
 
 		<div id="image-container" class="field f_100">
-			<label for="image">
+			<label for="image" class="label">
 				Upload image<div class="smalltext">(.jpg, .gif, or .png)</div>
 			</label>
-			<input type="file" name="image" accept="image/*"/>
-			{include "templates/snippets/image_thumb_list.tpl" image=$people.image content='people'}
+			<div class="original_div">
+				<input type="file" name="image[]" accept="image/*"/>
+				<a class="addImage"><font size="2">Add More Images</font></a>
+			</div>
+			<div class="addtionalImages">
+				<ol class="image_list">
+					
+				</ol>
+			</div>
+			{include "templates/snippets/image_thumb_list.tpl" image=$people.image content='people' contentId=$people.people_id}
+			<!--remove image link-->
+			<a class="remove" href='{gl url="admin/people/removeAllImages"}/{$people.people_id}'>remove all images</a>
 		</div>
 
 		<div id="form-submit" class="field f_100 clearfix submit">

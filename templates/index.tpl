@@ -21,7 +21,7 @@
 
         {/if}
     </title>
-
+ 
 {*---------------------------------------------------------------------------*}
 
 	<meta name="description" content="$g.desc">
@@ -39,7 +39,7 @@
     <script type="text/javascript">var weburl = '{$weburl}';</script>
     <script type="text/javascript" src="{$weburl}static/js/main.js"></script>
 
-	<link rel="shortcut icon" href="{$weburl}static/images/favicon.png">
+	<link rel="shortcut icon" href="http://hci.usask.ca/static/images/favicon.png">
 	<!--[if lte IE 6]>
 		<link type="text/css" rel="stylesheet" href="/ie.css" media="all" />
 	<![endif]-->
@@ -58,7 +58,8 @@
 
 		<div id="header">
 			<div id="logo">
-				<a href="{$weburl}"><img src="{$weburl}static/images/logo-green.gif" width="261" height="61" alt="the interaction lab" border="0"></a>
+				<!--<a href="{$weburl}"><img src="{$weburl}static/images/logo-green.gif" width="261" height="61" alt="the interaction lab" border="0"></a>-->
+				<a href="{$weburl}"><img src="{$weburl}static/images/upeishield.png" width="180" height="70" alt="the interaction lab" border="0"></a>
 			</div>
 			<div id="graphic">
 

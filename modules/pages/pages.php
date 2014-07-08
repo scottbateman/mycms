@@ -13,7 +13,35 @@ $g['template'] = 'home';
 
 //-----------------------------------------------------------------------------
 
+//TODO: after login it should continue on the current page not the homepage
+if  ($_GET['action'] == 'login')
+	$g['auth']->authenticate();
+
+else if ($_GET['action'] == 'logout')
+{
+	if ($g['user'])
+		$g['auth']->logout(system::genlink(''));
+	$_GET['action'] = 'home';
+}
+if($g['trac_url']){
+	$trac_state = 'trac';
+}else{
+	$trac_state = '';
+}
+if(isset($_SESSION['username'])){
+	$username = $_SESSION['username'];
+}else{
+	$username = null;
+}
+if($g['user']['is_admin']){
+	$admin_state = 'admin';
+}else{
+	$admin_state = null;
+}
+//-----------------------------------------------------------------------------
+
 // Set main menu options
+
 $menu = array(
 	array('name' => 'Home',         'url' => '',             ),
 	array('name' => 'People',       'url' => 'people',       ),
@@ -22,37 +50,39 @@ $menu = array(
 	array('name' => 'Courses',      'url' => 'courses',      ),
 	array('name' => 'Download',     'url' => 'download',     ),
 	array('name' => 'Contact',      'url' => 'contact',      ),
+	array('name' => $admin_state, 	'url' => $admin_state,	 ),
 );
+
 $g['smarty']->assign('menu', $menu);
 
 $auth_menu_state = $g['user']['is_authenticated'] ? 'logout' : 'login';
-
+//echo $g['user']['id'];
 // Set secondary menu options
-$menu = array(
+/*$menu = array(
 	array('name' => 'trac',           'url' => $g['trac_url'],                          ),
-	array('name' => $auth_menu_state, 'url' => $auth_menu_state, 'user_id' => $g['user']['id']),
-);
+	array('name' => $auth_menu_state, 'url' => $auth_menu_state, 'user_id' => $g['user']['id'],),
+);*/
 
+
+//-----------------------------------------------------------------------------
+
+
+//$auth_menu_state = $g['user'] === false ? 'login' : 'logout';
+$auth_menu_state = $g['user']['is_authenticated'] === false ? 'login' : 'logout';
+//$login_link = $auth_menu_state === 'login' ? 'login.html' : 'logout';
+// Set secondary menu options
+
+$menu = array(
+	array('name' => $trac_state,        'url' => $g['trac_url'],                          ),
+	//array('name' => $auth_menu_state, 'url' => $auth_menu_state, 'user_id' => $g['user']),
+	//array('name' => $auth_menu_state, 	'url' => $auth_menu_state, 'user_id' => $g['user']['id']),
+	array('name' => $auth_menu_state, 	'url' => $auth_menu_state, 'user_id' => $username),
+	//array('name' => 'Login', 'url' => 'login.html'),
+);
 $g['smarty']->assign('menu_2', $menu);
 
-//-----------------------------------------------------------------------------
 
-switch($_GET['action']){
-
-//-----------------------------------------------------------------------------
-
-//TODO: after login it should continue on the current page not the homepage
-case 'login':
-	$g['auth']->authenticate();
-	goto HOME;
-case 'logout':
-	$g['auth']->logout(system::genlink(''));
-	goto HOME;
-
-//-----------------------------------------------------------------------------
-
-HOME:
-case 'home': {
+if ($_GET['action'] == 'home') {
 	$imglist = pages::get_imagelist(true);
 	if (!$imglist['error'] && $imglist['count'] > 0)
 		$g['smarty']->assign('imglist', $imglist);
@@ -71,11 +101,11 @@ case 'home': {
 
 	$g['smarty']->assign('selectedmenu', 'Home');
 	$g['template'] = 'home';
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-case 'people': {
+else if ($_GET['action'] == 'people') {
 	if (isset($_GET['id']) && isset($_GET['details'])) {
 
 		$id = $_GET['id'];
@@ -117,13 +147,14 @@ case 'people': {
 	} else if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$g['smarty']->assign('selectedmenu', 'People');
-		$ppl = $g['content']['people']->view('default',
-			"people.people_id = $id",
-			'',
-			'0,99',
-			true,
-			array('research' => 5, 'publication' => 5));
-
+		$ppl = $g['content']['people']->view('default',//display
+			"people.people_id = $id",//where
+			'',//sortby
+			'0,99',//limit
+			true,//get referenced data
+			array(),//refrence limit  //array('research' => 5, 'publication' => 5));
+			array('publication' => 'publication.publication_year DESC'));//refrence order
+			
 		if (!$ppl['error'] && $ppl['count'] > 0)
 			$p = $ppl['rows'][0];
 			$g['smarty']->assign('page_l', implode(' ', array($p['people_firstname'], $p['people_middlename'], $p['people_lastname'])));
@@ -140,11 +171,11 @@ case 'people': {
 
 		$g['template'] = 'people';
 	}
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-case 'research': {
+else if ($_GET['action'] == 'research') {
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$g['smarty']->assign('selectedmenu', 'Research');
@@ -166,11 +197,11 @@ case 'research': {
 
 		$g['template'] = 'research';
 	}
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-case 'publication': {
+else if ($_GET['action'] == 'publication' || $_GET['action'] == 'publications') {
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$g['smarty']->assign('selectedmenu', 'Publications');
@@ -182,66 +213,58 @@ case 'publication': {
 			$g['smarty']->assign('publication', $p);
 
 		$g['template'] = 'snippets/publication_default';
-	}
-} break;
-
-//-----------------------------------------------------------------------------
-
-case 'publications': {
-	$g['smarty']->assign('selectedmenu', 'Publications');
-	$g['smarty']->assign('page', 'Publications');
-
-	if (isset($_GET['id'])) {
-		$page = $_GET['id'];
 	} else {
-		$page = 1;
+		$g['smarty']->assign('page', 'Publications');
+		$g['smarty']->assign('selectedmenu', 'Publications');
+		$pubs = $g['content']['publication']->view('teaser', '', 'publication.publication_year DESC');
+
+		if (!$pubs['error'] && $pubs['count'] > 0)
+			$g['smarty']->assign('publications', $pubs);
+
+		$g['template'] = 'publication';
 	}
-
-	$pg_max = 100;
-	$pg_s = ($page - 1) * $pg_max;
-
-	$pubs = $g['content']['publication']->view('teaser', '', 'publication.publication_year DESC', "$pg_s,$pg_max");
-
-	if (!$pubs['error'] && $pubs['count'] > 0) {
-		$g['smarty']->assign('publications', $pubs);
-	}
-
-	$g['template'] = 'publication';
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-case 'courses': {
+else if ($_GET['action'] == 'courses') {
 	$g['smarty']->assign('page', 'Courses');
 	$g['smarty']->assign('selectedmenu', 'Courses');
 	$g['template'] = 'courses';
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-case 'download': {
+else if ($_GET['action'] == 'download') {
 	$g['smarty']->assign('page', 'Download');
 	$g['smarty']->assign('selectedmenu', 'Download');
 	$g['template'] = 'download';
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-case 'contact': {
+else if ($_GET['action'] == 'contact') {
 	$g['smarty']->assign('page', 'Contact');
 	$g['smarty']->assign('selectedmenu', 'Contact');
 	$g['template'] = 'contact';
-} break;
+}
 
 //-----------------------------------------------------------------------------
 
-default: {
+else if ($_GET['action'] == 'admin') {
+	$g['smarty']->assign('page', 'Admin');
+	$g['smarty']->assign('selectedmenu', 'Admin');
+	$g['template'] = 'admin';
+}
+
+//-----------------------------------------------------------------------------
+
+else {
 	$g['smarty']->assign('page', 'Error');
 	$g['template'] = 'notfound';
 }
 
 //-----------------------------------------------------------------------------
 
-}
 
 //-----------------------------------------------------------------------------

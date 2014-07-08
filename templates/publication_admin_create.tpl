@@ -116,7 +116,7 @@ year:         The year of publication (or, if unpublished, the year of creation)
 			<label for="publication_toappear">
 				To appear
 			</label>
-			<input type="checkbox" name="publication_toappear" id="publication_toappear">
+			<input type="checkbox" name="publication_toappear" id="publication_toappear" required checked>
 		</div>
 
 
@@ -258,33 +258,51 @@ year:         The year of publication (or, if unpublished, the year of creation)
 			<label for="publication_abstract">
 				Abstract
 			</label>
-			<textarea name="publication_abstract" id="publication_abstract"></textarea>
+			<textarea name="publication_abstract" id="publication_abstract" required></textarea>
 		</div>
 
 		<div id="image-container" class="field f_100">
-			<label for="image">
+			<label for="image" class="label">
 				Upload image<div class="smalltext">(.jpg, .gif, or .png)</div>
 			</label>
-			<input type="file" name="image" accept="image/*"/>
-			<div class="image-list">
+			<div class="original_div">
+				<input type="file" name="image[]" accept="image/*"/>
+				<a class="addImage"><font size="3">Add More Images</font></a>
+			</div>
+			<div class="addtionalImages">
+				<ol class="image_list">
+					
+				</ol>
 			</div>
 		</div>
 
 		<div id="video-container" class="field f_100">
-			<label for="video">
+			<label for="video" class="label">
 				Upload video<div class="smalltext">(.mp4, .webm, .ogg)</div>
 			</label>
-			<input type="file" name="video" accept="video/*"/>
-			<div class="video-list">
+			<div class="original_div">
+				<input type="file" name="video[]" accept="video/*"/>
+				<a class="addVideo"><font size="3">Add More Videos</font></a>
+			</div>
+			<div class="addtionalVideos">
+				<ol class="video_list">
+					
+				</ol>
 			</div>
 		</div>
 
 		<div id="doc-container" class="field f_100">
-			<label for="doc">
+			<label for="doc" class="label">
 				Upload document<div class="smalltext">(.pdf)</div>
 			</label>
-			<input type="file" name="doc"/>
-			<div class="doc-list">
+			<div class="original_div">
+				<input type="file" name="doc[]"/>
+				<a class="addDoc"><font size="3">Add More Documents</font></a>
+			</div>
+			<div class="addtionalDocs">
+				<ol class="doc_list">
+					
+				</ol>
 			</div>
 		</div>
 

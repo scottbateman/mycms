@@ -283,27 +283,57 @@
 		</div>
 
 		<div id="image-container" class="field f_100">
-			<label for="image">
+			<label for="image" class="label">
 				Upload image<div class="smalltext">(.jpg, .gif, or .png)</div>
 			</label>
-			<input type="file" name="image" accept="image/*"/>
-			{include "templates/snippets/image_thumb_list.tpl" image=$publication.image content='publication'}
+			<div class="original_div">
+				<input type="file" name="image[]" accept="image/*"/>
+				<a class="addImage"><font size="2">Add More Images</font></a>
+			</div>
+			<div class="addtionalImages">
+				<ol class="image_list">
+					
+				</ol>
+			</div>
+			{include "templates/snippets/image_thumb_list.tpl" image=$publication.image content='publication' contentId=$publication.publication_id}
+			<!--remove image link-->
+			<a class="remove" href='{gl url="admin/publication/removeAllImages"}/{$publication.publication_id}'>remove all images</a>
 		</div>
 
 		<div id="video-container" class="field f_100">
-			<label for="video">
+			<label for="video" class="label">
 				Upload video<div class="smalltext">(.mp4, .webm, .ogg)</div>
 			</label>
-			<input type="file" name="video" accept="video/*"/>
-			{include "templates/snippets/video_list.tpl" video=$publication.video content='publication'}
+			<div class="original_div">
+				<input type="file" name="video[]" accept="video/*"/>
+				<a class="addVideo"><font size="2">Add More Videos</font></a>
+			</div>
+			<div class="addtionalVideos">
+				<ol class="video_list">
+					
+				</ol>
+			</div>
+			{include "templates/snippets/video_list.tpl" video=$publication.video content='publication' contentId=$publication.publication_id}
+			<!--remove video link-->
+			<a class="remove" href='{gl url="admin/publication/removeAllVideos"}/{$publication.publication_id}'>remove all videos</a>
 		</div>
 
 		<div id="doc-container" class="field f_100">
-			<label for="doc">
+			<label for="doc" class="label">
 				Upload document<div class="smalltext">(.pdf)</div>
 			</label>
-			<input type="file" name="doc"/>
-			{include "templates/snippets/doc_list.tpl" doc=$publication.doc content='publication'}
+			<div class="original_div">
+				<input type="file" name="doc[]"/>
+				<a class="addDoc"><font size="2">Add More Documents</font></a>
+			</div>
+			<div class="addtionalDocs">
+				<ol class="doc_list">
+					
+				</ol>
+			</div>
+			{include "templates/snippets/doc_list.tpl" doc=$publication.doc content='publication' contentId=$publication.publication_id}
+			<!--remove doc link-->
+			<a class="remove" href='{gl url="admin/publication/removeAllDocs"}/{$publication.publication_id}'>remove all documents</a>
 		</div>
 
 		<div id="form-submit" class="field f_100 clearfix submit">

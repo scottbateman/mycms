@@ -15,13 +15,21 @@
 @define('L_DOWNLOADS', 'Downloads');
 @define('L_DOWNLOAD', 'Download');
 @define('L_CONTACT', 'Contact');
+//---------------------------------
+// home page -> admin interface
+@define('L_ADMIN', 'Admin');
+// empty menu item
+@define('L_', '');
+//---------------------------------
 @define('L_ERROR', 'Error');
 @define('L_SEARCH', 'Search');
 @define('L_PAGE_NOT_FOUND', 'Page Not Found');
 @define('L_NO_PAGE', 'The requested URL was not found on this server');
-@define('L_FOOTER', 'The Interaction Lab, University of Saskatchewan');
+//@define('L_FOOTER', 'The Interaction Lab, University of Saskatchewan');
+@define('L_FOOTER', 'The Human-Computer Interaction Lab, University of Prince Edward Island');
 @define('L_INTERACTION_LAB', 'Interaction Lab');
 @define('L_PEOPLE', 'People');
+@define('L_HCI_DESCRIPTION', 'The Human-Computer Interaction Lab is a research facility in the Department of Computer Science at the University of Saskatchewan. We carry out research in computer-supported cooperation, next-generation interfaces, computer games, affective computing, surface computing, and information visualization.');
 @define('L_FACULTY', 'Faculty');
 @define('L_ADJUNCT_FACULTY', 'Adjunct Faculty');
 @define('L_RESEARCHER', 'Researcher');
@@ -69,4 +77,3 @@
 @define('L_TRAC', 'Trac');
 @define('L_LOGIN', 'Login');
 @define('L_LOGOUT', 'Logout');
-@define('L_WEBSITE_DESCRIPTION', 'put the description of this website here.');

@@ -78,20 +78,36 @@
 		</div>
 
 		<div id="image-container" class="field f_100">
-			<label for="image">
+			<label for="image" class="label">
 				Upload image<div class="smalltext">(.jpg, .gif, or .png)</div>
 			</label>
-			<input type="file" name="image" accept="image/*"/>
+			<div class="original_div">
+				<input type="file" name="image[]" accept="image/*"/>
+				<a class="addImage"><font size="3">Add More Images</font></a>
+			</div>
+			<div class="addtionalImages">
+				<ol class="image_list">
+					
+				</ol>
+			</div>
+			
 			<div class="image-thumb-list">
 			</div>
 		</div>
 
 		<div id="video-container" class="field f_100">
-			<label for="video">
+			<label for="video" class="label">
 				Upload video<div class="smalltext">(.mp4, .webm, .ogg)</div>
 			</label>
-			<input type="file" name="video" accept="video/*"/>
-			<div class="video-list">
+			<div class="original_div">
+				<input type="file" name="video[]" accept="video/*"/>
+				<a class="addVideo"><font size="3">Add More Videos</font></a>
+			</div>
+			<!--<button id="add_video">more video</button>-->
+			<div class="addtionalVideos">
+				<ol class="video_list">
+					
+				</ol>
 			</div>
 		</div>
 

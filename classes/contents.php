@@ -12,7 +12,7 @@ class image extends content {
 
 	public $ext	     = array("gif", "jpeg", "jpg", "png");
 	public $mime	 = array("image/gif", "image/jpeg", "image/jpg", "image/png");
-	public $max_size = 1048576; // 1 * 1024 * 1024;
+	public $max_size = 10485760; // 10 * 1024 * 1024;
 
 	public $__table = 'mycms_image';	// table name
 	public $image_id;					// int(11)  not_null primary_key unique_key auto_increment
@@ -35,9 +35,9 @@ $g['content']['image'] = new image();
 
 class video extends content {
 
-    public $ext      = array("mp4", "webm", "ogg");
-    public $mime     = array("video/mp4", "video/webm", "video/ogg");
-    public $max_size = 10485760; // 10 * 1024 * 1024;
+    public $ext      = array("mp4", "webm", "ogg", "mov");
+    public $mime     = array("video/mp4", "video/webm", "video/ogg", "video/quicktime");
+    public $max_size = 104857600; // 100 * 1024 * 1024;
 
 	public $__table = 'mycms_video';	// table name
 	public $video_id;					// int(11)  not_null primary_key unique_key auto_increment
@@ -62,7 +62,7 @@ class doc extends content {
 
     public $ext      = array("pdf");
     public $mime     = array("application/pdf");
-    public $max_size = 1048576; // 1 * 1024 * 1024;
+    public $max_size = 10485760; // 10 * 1024 * 1024;
 
 	public $__table = 'mycms_doc';		   // table name
 	public $doc_id;						  // int(11)  not_null primary_key unique_key auto_increment
@@ -108,6 +108,7 @@ class people extends content {
     public $people_group;               // string(21)  not_null enum
 	public $people_role;				// string(21)  not_null enum
 	public $people_nsid;				// string(6)
+	public $people_password;			// string(32)
 	public $people_start;				// date(10)  binary
 	public $people_end;					// date(10)  binary
 
@@ -120,6 +121,7 @@ class people extends content {
 		'people_email'	     => 'email',
         'people_bio'         => 'string',
 		'people_nsid'		 => 'string',
+		'people_password'	 => 'password',
 		'people_group'	     => 'enum:faculty,adjunct_faculty,researcher,graduate_student,staff,alumni,recent_visitor,undergraduate_student,other',
 		'people_role'        => 'enum:administrator,authenticated',
 		'people_start'	     => 'date:Y-m-d',

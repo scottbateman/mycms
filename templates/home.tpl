@@ -14,13 +14,13 @@
 
 {*---------------------------------------------------------------------------*}
 
-<p id="website_description">{t s="website_description" m=0}</p>
+<p id="hci_description">{t s="HCI_DESCRIPTION" m=0}</p>
 
 {include "templates/snippets/section_title.tpl" title={t s=Faculty m=0}}
 {if isset($faculty)}
 	{include "templates/snippets/people_teaser_list.tpl" people=$faculty group=false}
 {/if}
-
+ 
 {*---------------------------------------------------------------------------*}
 
 {include "templates/snippets/section_title.tpl" title={t s='Current Research' m=0}}

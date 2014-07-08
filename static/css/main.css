@@ -64,7 +64,8 @@ input, textarea, select {
 }
 
 #header {
-	background: url(../images/header-back-green.gif) repeat-x;
+	/*background: url(../images/header-back-green.gif) repeat-x;*/
+	background: gainsboro;
 	height: 83px;
 }
 
@@ -314,7 +315,7 @@ input, textarea, select {
 	margin: 0 0 6px 0;
 }
 
-#website_description {
+#hci_description {
 	font-size: 15px;
 	font-weight: bold;
 	line-height: 21px;
@@ -544,4 +545,73 @@ input.refrence, input.find {
 a.view-all {
 	margin: 5px 0px 15px;
 	display: inline-block;
+}
+
+/*research*/
+.research_list li{
+	display: none;
+}
+#loadAllResearch {
+    color:green;
+    cursor:pointer;
+}
+#loadAllResearch:hover {
+    color:black;
+}
+#showLessResearch {
+    color:red;
+    cursor:pointer;
+    display:none;
+}
+#showLessResearch:hover {
+    color:black;
+}
+/*publication*/
+.publication_list li{
+	display: none;
+}
+
+#loadAllPublication {
+    color:green;
+    cursor:pointer;
+}
+#loadAllPublication:hover {
+    color:black;
+}
+#showLessPublication {
+    color:red;
+    cursor:pointer;
+    display:none;
+}
+#showLessPublication:hover {
+    color:black;
+}
+
+/* make addtional inputs be organized*/
+.addtionalImages {
+	margin-left: 150px;
+}
+
+.addtionalVideos {
+	margin-left: 150px;
+}
+
+.addtionalDocs {
+	margin-left: 150px;
+}
+/* warning color of message */
+#nsid_check_result {
+	color: red;
+}
+#password_check_result {
+	color: red;
+}
+#repassword_check_result {
+	color: red;
+}
+#group_publication {
+	display: none;
+}
+#group_research {
+	display: none;
 }

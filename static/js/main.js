@@ -7,7 +7,7 @@ $(document).ready(function()
 //-----------------------------------------------------------------------------
 
 	//Style selects, checkboxes, etc
-	$("select, input:checkbox, input:radio, input:file").uniform();
+	//$("select, input:checkbox, input:radio, input:file").uniform();
 
 	//Date and Range Inputs
 	$("input.date").dateinput();
@@ -183,8 +183,20 @@ $(document).ready(function()
                     error(data.message);
                 }
             });
-        } else if (input.hasClass('find')) {
+        }/* else if (input.hasClass('find')) {
             window.location.href = weburl + 'admin/' + s.data('type') + '/view/' + s.data('id');
+        }*/
+        /******************************************************************************************/
+        //modify redirect of URL, implement for search boxes those are in normal user pages -- people/research/publications
+        else if (input.hasClass('find')) {
+            if(window.location.href.indexOf("admin") > -1){
+                window.location.href = weburl + 'admin/' + s.data('type') + '/view/' + s.data('id');
+            }else if(window.location.href.indexOf("publication") > -1){
+                window.location.href = weburl + s.data('type') + 's/' + s.data('id');
+            }else {
+                window.location.href = weburl + s.data('type') + '/' + s.data('id');
+            }
+
         }
     }
 
@@ -377,7 +389,213 @@ $(document).ready(function()
 
 //-----------------------------------------------------------------------------
 
-});
+/*add on show/hide js code*/
+    //research
+    //count the number of research
+    var research_count = $(".research_list li.research_li").length;
+    //set the number of researches those are originally shown
+    var x=3;
+    //the originally display
+    $('.research_list li.research_li:lt('+x+')').show();
+    //if the number of research is less than this number
+    if(research_count<=3)
+        //then hide the load all link
+        $('#loadAllResearch').hide();
+    //load all rest research
+    $('#loadAllResearch').click(function () {
+        //set the number of displaying to the number of researches
+        x=research_count;
+        //show contents
+        $('.research_list li.research_li:lt('+x+')').show();
+        //show the show less link
+        $('#showLessResearch').show();
+        //hide the load all link
+        $('#loadAllResearch').hide();
+        //hide the ungroup researches div
+        $('#ungroup_research').hide();
+        //show the group researches div
+        $('#group_research').show();
+    });
+    //show less/change to orignal display
+    $('#showLessResearch').click(function () {
+        //set the number to orignal one
+        x=3;
+        //hide the overflow contents
+        $('.research_list li.research_li').not(':lt('+x+')').hide();
+        //show the load all link
+        $('#loadAllResearch').show();
+        //hide the show less link
+        $('#showLessResearch').hide();
+        //show the ungroup researches div
+        $('#ungroup_research').show();
+        //hide the group researches div
+        $('#group_research').hide();
+    });
+    //publication
+    //count the number of publication
+    var publication_count = $(".publication_list li.publication_li").length;
+    //the number of publication those are originally shown
+    var x=3;
+    //the originally display
+    $('.publication_list li.publication_li:lt('+x+')').show();
+    //if the number of publication is less than this number
+    if(publication_count<=3)
+        //then hide the load all link
+        $('#loadAllPublication').hide();
+    //load all rest research
+    $('#loadAllPublication').click(function () {
+        //set the number of displaying to the number of publications
+        x=publication_count;
+        //show content
+        $('.publication_list li.publication_li:lt('+x+')').show();
+        //show the show less link
+        $('#showLessPublication').show();
+        //hide the load all link
+        $('#loadAllPublication').hide();
+        //hide the ungroup publications div
+        $('#ungroup_publication').hide();
+        //show the group publications div
+        $('#group_publication').show();
+    });
+    //show less/change to orignal display
+    $('#showLessPublication').click(function () {
+        //set the number to orignal one
+        x=3;
+        //hide the overflow contents
+        $('.publication_list li.publication_li').not(':lt('+x+')').hide();
+        //show the load all link
+        $('#loadAllPublication').show();
+        //hide the show less link
+        $('#showLessPublication').hide();
+        //show the ungroup publications div
+        $('#ungroup_publication').show();
+        //hide the group publications div
+        $('#group_publication').hide();
+    });
+//-----------------------------------------------------------------------------
+    //insert form element input on demand
+    $('.addImage').click(function (){
+        //append input and remove link
+        $('.image_list').append('<li class="addtional_image"><input type="file" name="image[]" accept="image/*"/><a class="rmImage"><font size="2">Remove<font></a></li>');
+        //get the length of addtional images
+        var number = $('.addtional_image').length;
+        //limit number of addtional images
+        if(number>=5){
+            $('.addImage').hide();//hide add link
+        }
+        //unbind the handler
+        $('.rmImage').unbind("click",removeImageHandler);
+        //add the handler
+        $('.rmImage').click(removeImageHandler);
+    });
+    //remvoe link's handler - Remove the input and li tags which are beside the remove link
+    var removeImageHandler = function(){
+        //Remove the li tag, including the input and remove link
+        $(this).parent("li").remove();  
+        //get the length of addtional images
+        var number = $('.addtional_image').length; 
+        //limit number of addtional images    
+        if(number<5){
+            $('.addImage').show();//show add link
+        }
+    };
+
+    $('.addVideo').click(function (){
+        //$('.image_list').append('<li><div class="uploader"><input type="file" name="image[]" accept="image/*" style="opacity: 0;"><span class="filename">No file selected</span><span class="action">Choose File</span></div><button class="removeButton" id="remove">Remove</button></li>');
+        $('.video_list').append('<li class="addtional_video"><input type="file" name="video[]" accept="video/*"/><a class="rmVideo"><font size="2">Remove<font></a></li>');
+        var number = $('.addtional_video').length;
+        //limit number of addtional videos
+        if(number>=5){
+            $('.addVideo').hide();//hide add link
+        }
+        //unbind the handler
+        $('.rmVideo').unbind("click",removeVideoHandler);
+        //add the handler
+        $('.rmVideo').click(removeVideoHandler);
+
+    });
+    //remvoe link's handler - Remove the input and li tags which are beside the remove link
+    var removeVideoHandler = function(){
+        //Remove the li tag, including the input and remove link
+        $(this).parent("li").remove();
+        //get the length of addtional videos
+        var number = $('.addtional_video').length;
+        //limit number of addtional videos
+        if(number<5){
+            $('.addVideo').show();//show add link
+        }
+    };
+    $('.addDoc').click(function (){
+        //$('.image_list').append('<li><div class="uploader"><input type="file" name="image[]" accept="image/*" style="opacity: 0;"><span class="filename">No file selected</span><span class="action">Choose File</span></div><button class="removeButton" id="remove">Remove</button></li>');
+        $('.doc_list').append('<li class="addtional_doc"><input type="file" name="video[]" accept="video/*"/><a class="rmDoc"><font size="2">Remove<font></a></li>');
+        var number = $('.addtional_doc').length;
+        //limit number of addtional docs
+        if(number>=5){
+            $('.addDoc').hide();//hide add link
+        }
+        //unbind the handler
+        $('.rmDoc').unbind("click",removeDocHandler);
+        //add the handler
+        $('.rmDoc').click(removeDocHandler);
+    });
+    //remvoe link's handler - Remove the input and li tags which are beside the remove link
+    var removeDocHandler = function(){
+        //Remove the li tag, including the input and remove link
+        $(this).parent("li").remove();
+        //get the length of addtional docs
+        var number = $('.addtional_doc').length;
+        //limit number of addtional docs
+        if(number<5){
+            $('.addDoc').show();//show add link
+        }
+    };
 
 //-----------------------------------------------------------------------------
+ // check nsid is following format while typing
+    $("#people_nsid").keyup(function() {
+        var nsid = $(this).val();
+        var patt = /[a-zA-Z]{3}[0-9]{3}/;
+        if(nsid!==""){
+            if(patt.test(nsid))
+                $("#nsid_check_result").text("NSID is avaliable.");
+            else
+                $("#nsid_check_result").text("NSID should be 3 letters plus 3 numbers");
+        }else{
+            $("#nsid_check_result").text("");
+        }
+    });
+//-----------------------------------------------------------------------------
+    // check password length while typing
+    $("#people_password").keyup(function() {
+        var password = $(this).val();
+        var length = password.length;
+        if(password!==""){
+            if(length<6)
+                $("#password_check_result").text("Password length is " + length + ", is too short.");
+            else if(length>32)
+                $("#password_check_result").text("Password length is " + length + ", is too long.");
+            else
+                $("#password_check_result").text("Password length is " + length + ", is avaliable.");
+        }else{
+            $("#password_check_result").text("");
+        }
+    });
+//-----------------------------------------------------------------------------
+    // check confirm password while typing
+    $("#people_repassword").keyup(check_confirm_password);
+    var check_confirm_password = function() {
+        var repassword = $(this).val();
+        var password = $("#people_password").val();
+        if(password!==""||repassword!==""){
+            if(password!==repassword)
+                $("#repassword_check_result").text("Passwords are different please recheck.");
+            else 
+                $("#repassword_check_result").text("Passwords are the same.");
+        }else{
+            $("#repassword_check_result").text("");
+        }
+    };
+//-----------------------------------------------------------------------------
+});
+
 

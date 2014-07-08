@@ -26,20 +26,26 @@
 				<img src="{$weburl}files/people/image/{$people.image.rows[$i].image_filename}" class="imagewrap" align="left" />
 			{/for}
 		{/if}
-
 		{if isset($people.publication) and $people.publication.count > 0}
 			{include "templates/snippets/section_title.tpl" title={t s=Publications m=0}}
-			{include "templates/snippets/publication_teaser_list.tpl" publication=$people.publication}
-			<a class="view-all" href="{$weburl}people/{$people.people_id}/publication">View All &gt;&gt;</a>
+			<div id="ungroup_publication">{include "templates/snippets/publication_teaser_list.tpl" publication=$people.publication}</div>
+			<div id="group_publication">{include "templates/snippets/publication_teaser_list.tpl" publication=$people.publication group=true}</div>
+			<!--<a class="view-all" href="{$weburl}people/{$people.people_id}/publication">View All &gt;&gt;</a>-->
+			<div id="loadAllPublication">Load all</div>
+			<div id="showLessPublication">Show less</div>
 		{/if}
 
 		{if isset($people.research) and $people.research.count > 0}
 			{include "templates/snippets/section_title.tpl" title={t s=Research m=0}}
-			{include "templates/snippets/research_teaser_list.tpl" research=$people.research}
-			<a class="view-all" href="{$weburl}people/{$people.people_id}/research">View All &gt;&gt;</a>
+			<div id="ungroup_research">{include "templates/snippets/research_teaser_list.tpl" research=$people.research group=true}</div>
+			<div id="group_research">{include "templates/snippets/research_teaser_list.tpl" research=$people.research group=true}</div>
+			<!--<a class="view-all" href="{$weburl}people/{$people.people_id}/research">View All &gt;&gt;</a>-->
+			<div id="loadAllResearch">Load all</div>
+			<div id="showLessResearch">Show less</div>
 		{/if}
 	</div>
 </div>
 {/if}
 
 {*---------------------------------------------------------------------------*}
+

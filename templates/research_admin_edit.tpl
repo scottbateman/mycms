@@ -107,19 +107,40 @@
 		</div>
 
 		<div id="image-container" class="field f_100">
-			<label for="image">
+			<label for="image" class="label">
 				Upload image<div class="smalltext">(.jpg, .gif, or .png)</div>
 			</label>
-			<input type="file" name="image" accept="image/*"/>
-			{include "templates/snippets/image_thumb_list.tpl" image=$research.image content='research'}
+			<div class="original_div">
+				<input type="file" name="image[]" accept="image/*"/>
+				<a class="addImage"><font size="2">Add More Images</font></a>
+			</div>
+			<div class="addtionalImages">
+				<!--<span class="info"></span>-->
+				<ol class="image_list">
+					
+				</ol>
+			</div>
+			{include "templates/snippets/image_thumb_list.tpl" image=$research.image content='research' contentId=$research.research_id}
+			<!--remove image link-->
+			<a class="remove" href='{gl url="admin/research/removeAllImages"}/{$research.research_id}'>remove all images</a>
 		</div>
 
 		<div id="video-container" class="field f_100">
-			<label for="video">
+			<label for="video" class="label">
 				Upload video<div class="smalltext">(.mp4, .webm, .ogg)</div>
 			</label>
-			<input type="file" name="video" accept="video/*"/>
-			{include "templates/snippets/video_list.tpl" video=$research.video content='research'}
+			<div class="original_div">
+				<input type="file" name="video[]" accept="video/*"/>
+				<a class="addVideo"><font size="2">Add More Videos</font></a>
+			</div>
+			<div class="addtionalVideos">
+				<ol class="video_list">
+					
+				</ol>
+			</div>
+			{include "templates/snippets/video_list.tpl" video=$research.video content='research' contentId=$research.research_id}
+			<!--remove video link-->
+			<a class="remove" href='{gl url="admin/research/removeAllVideos"}/{$research.research_id}'>remove all videos</a>
 		</div>
 
 		<div id="form-submit" class="field f_100 clearfix submit">
