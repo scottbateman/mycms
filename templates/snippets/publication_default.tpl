@@ -1,6 +1,6 @@
 
 {*---------------------------------------------------------------------------*}
-
+<script type="text/javascript" src="{$weburl}static/js/publication.js"></script>
 {if isset($publication)}
 <div class="publication-default" data-type='publication' data-id={$publication.publication_id}>
 	{if isset($user) and $user.is_admin}

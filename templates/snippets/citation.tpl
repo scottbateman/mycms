@@ -40,7 +40,7 @@
 	{if !empty($p.publication_school)}&nbsp;<i>{$p.publication_school}</i>.{/if}
 	{if !empty($p.publication_toappear) and not $p.publication_toappear}&nbsp;To appear.{/if}
 	{if !empty($p.publication_note)}&nbsp;{$p.publication_note}.{/if}
-	{if !empty($p.publication_doi_number)}&nbsp;&lt;doi:{$p.publication_doi_number}&gt;{/if}
+	{if !empty($p.publication_doi_number)}<a hidden class="doi_number" href="http://dx.doi.org/{$p.publication_doi_number}">&nbsp;doi:{$p.publication_doi_number}</a>{/if}
 </div>
 {/strip}
 
