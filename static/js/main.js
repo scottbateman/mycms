@@ -582,8 +582,7 @@ $(document).ready(function()
     });
 //-----------------------------------------------------------------------------
     // check confirm password while typing
-    $("#people_repassword").keyup(check_confirm_password);
-    var check_confirm_password = function() {
+    $("#people_repassword").keyup(function() {
         var repassword = $(this).val();
         var password = $("#people_password").val();
         if(password!==""||repassword!==""){
@@ -594,7 +593,7 @@ $(document).ready(function()
         }else{
             $("#repassword_check_result").text("");
         }
-    };
+    });
 //-----------------------------------------------------------------------------
 });
 

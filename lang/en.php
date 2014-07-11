@@ -18,6 +18,7 @@
 //---------------------------------
 // home page -> admin interface
 @define('L_ADMIN', 'Admin');
+@define('L_AUTH', 'Auth');
 // empty menu item
 @define('L_', '');
 //---------------------------------

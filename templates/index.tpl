@@ -31,9 +31,6 @@
     <link rel="stylesheet" href="{$weburl}static/css/uniform.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="{$weburl}static/css/admin.css"   type="text/css" media="all"/>
 	<link rel="stylesheet" href="{$weburl}static/css/print.css"   type="text/css" media="print">
-	<link href="static/css/bootstrap.css" rel="stylesheet">
-    <link href="static/css/docs.css" rel="stylesheet">  
-	<link href="static/css/carousel.css" rel="stylesheet">
 	
     <script src="//code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -41,8 +38,6 @@
     <script type="text/javascript" src="{$weburl}static/js/jquery.uniform.min.js"></script>
     <script type="text/javascript">var weburl = '{$weburl}';</script>
     <script type="text/javascript" src="{$weburl}static/js/main.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-
 
 	<link rel="shortcut icon" href="http://hci.usask.ca/static/images/favicon.png">
 	<!--[if lte IE 6]>

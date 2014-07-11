@@ -33,9 +33,11 @@ if(isset($_SESSION['username'])){
 }else{
 	$username = null;
 }
-if($g['user']['is_admin']){
+if($g['user']['is_admin']||$g['user']['is_authenticated']){
 	$admin_state = 'admin';
-}else{
+}/*else if($g['user']['is_authenticated']&&!$g['user']['is_admin']){
+	$admin_state = 'auth';
+}*/else{
 	$admin_state = null;
 }
 //-----------------------------------------------------------------------------
@@ -259,6 +261,14 @@ else if ($_GET['action'] == 'contact') {
 else if ($_GET['action'] == 'admin') {
 	$g['smarty']->assign('page', 'Admin');
 	$g['smarty']->assign('selectedmenu', 'Admin');
+	$g['template'] = 'admin';
+}
+
+//-----------------------------------------------------------------------------
+
+else if ($_GET['action'] == 'auth') {
+	$g['smarty']->assign('page', 'Admin');
+	$g['smarty']->assign('selectedmenu', 'Auth');
 	$g['template'] = 'admin';
 }
 
