@@ -26,6 +26,13 @@ if($g['user']['is_admin']){
 	$g['template'] = $ct . '_admin_create';
 }else if($g['user']['is_authenticated']&&!$g['user']['is_admin']){
 	if($ct === 'people'){
+		?>
+		<style type="text/css">
+			#people-container{
+				display:none;
+			}
+		</style>
+		<?php
 		$id = $g['user']['id'];
 		$r = $g['content'][$ct]->view('default', "$ct.{$ct}_nsid = \"$id\"");
 		$g['smarty']->assign($ct, $r['rows'][0]);
