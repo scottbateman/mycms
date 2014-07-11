@@ -66,6 +66,7 @@
 
 {include "templates/snippets/section_title.tpl" title={t s=Faculty m=0}}
 {if isset($faculty)}
+	<p>faculty</p>
 	{include "templates/snippets/people_teaser_list.tpl" people=$faculty group=false}
 {/if}
  
@@ -73,6 +74,7 @@
 
 {include "templates/snippets/section_title.tpl" title={t s='Current Research' m=0}}
 {if isset($research)}
+	<p>{$research.count}</p>
 	{include "templates/snippets/research_teaser_list.tpl" research=$research}
 {/if}
 <a href="{gl url='research'}">{t s='View All' m=0}<span class="arrows">&gt;&gt;</span></a>
@@ -81,6 +83,7 @@
 
 {include "templates/snippets/section_title.tpl" title={t s='Recent Publications' m=0}}
 {if isset($publication)}
+	<p>{$publication.count}</p>
 	{include "templates/snippets/publication_teaser_list.tpl" publication=$publication}
 {/if}
 <a href="{gl url='publications'}">{t s='View All' m=0}<span class="arrows">&gt;&gt;</span></a>

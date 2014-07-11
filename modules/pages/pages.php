@@ -84,20 +84,24 @@ $g['smarty']->assign('menu_2', $menu);
 
 if ($_GET['action'] == 'home') {
 	$imglist = pages::get_imagelist(true);
-	if (!$imglist['error'] && $imglist['count'] > 0)
+	if (!$imglist['error'] && $imglist['count'] > 0){
 		$g['smarty']->assign('imglist', $imglist);
+	}
 
 	$faculty = $g['content']['people']->view('teaser', 'people.people_group = "faculty"');
-	if (!$faculty['error'] && $faculty['count'] > 0)
+	if (!$faculty['error'] && $faculty['count'] > 0){
 		$g['smarty']->assign('faculty', $faculty);
+	}
 
 	$research = $g['content']['research']->view('teaser', 'research.research_status = "active"', 'research.research_priority DESC', '0,3');
-	if (!$research['error'] && $research['count'] > 0)
+	if (!$research['error'] && $research['count'] > 0){
 		$g['smarty']->assign('research', $research);
+	}
 
 	$publication = $g['content']['publication']->view('teaser', '', 'publication.publication_year DESC', '0,3');
-	if (!$publication['error'] && $publication['count'] > 0)
+	if (!$publication['error'] && $publication['count'] > 0){
 		$g['smarty']->assign('publication', $publication);
+	}
 	$g['smarty']->assign('show_main_page_tiles', $g['show_main_page_tiles']);
 	$g['smarty']->assign('show_main_page_carousel', $g['show_main_page_carousel']);
 	$g['smarty']->assign('selectedmenu', 'Home');
