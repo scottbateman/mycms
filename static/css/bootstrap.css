@@ -4685,6 +4685,7 @@ a.list-group-item.active > .badge,
     font-size: 63px;
   }
 }
+/* Change the name for conflicted name with thumbnail in main css */
 .thumbnail_boot {
   display: block;
   padding: 4px;

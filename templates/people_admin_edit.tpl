@@ -92,7 +92,7 @@
 			<label for="people_repassword">
 				Confirm Password
 			</label>
-   			<input type="repassword" name="people_repassword" id="people_repassword">
+   			<input type="password" name="people_repassword" id="people_repassword">
 			<div id="repassword_check_result"></div>    
     	</div>
 

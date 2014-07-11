@@ -128,10 +128,9 @@ function validate ($type, &$v) {
 	} case 'password': {
 		if($val!=='')
 		{
-			/*if(strlen($val) < 6 || strlen($val) > 32)
-				$val = false;
-			else*/
 			$val = MD5($val);
+		}else{
+			$val = false;
 		}
 		break;
 	} default:
@@ -525,6 +524,10 @@ else if (checkparams(array(
 		if (property_exists("\\mycms\\$ct", $k)) {
 			if (validate($content->field_type[$k], $v))
 				$content->$k = $v;
+			else if(!validate($content->field_type[$k], $v)&&$content->field_type[$k]==="password"){
+					//if password is empty, the password is not changed in database
+					continue;
+				}
 			else
 				$g['error']->push("worng format($k ". $content->field_type[$k] . ") at $v");
 		}
@@ -894,8 +897,13 @@ else if (checkparams(array(
 	if ($r == 1) {
 		foreach ($_POST as $k => $v) {
 			if (property_exists("\\mycms\\$ct", $k)) {
-				if (validate($content->field_type[$k], $v))
+				if (validate($content->field_type[$k], $v)){
 					$content->$k = $v;
+				}
+				else if(!validate($content->field_type[$k], $v)&&$content->field_type[$k]==="password"){
+					//if password is empty, the password is not changed in database
+					continue;
+				}
 				else
 					$g['error']->push("worng format($k ". $content->field_type[$k] . ") at $v");
 			}

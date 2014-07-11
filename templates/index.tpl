@@ -36,7 +36,6 @@
 	<link href="static/css/carousel.css" rel="stylesheet">
 	
     <script src="//code.jquery.com/jquery-1.7.2.min.js"></script>
-    <!--<script src="static/js/jquery-1.11.1.min.js"></script>-->
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript" src="{$weburl}static/js/jquery.tools.js"></script>
     <script type="text/javascript" src="{$weburl}static/js/jquery.uniform.min.js"></script>
