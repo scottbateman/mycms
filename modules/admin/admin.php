@@ -360,8 +360,8 @@ function save_file_multiple ($ct, $ct_id, $filename, $fileTmpName, $fileType, $f
 	//$ext = end(explode('.', $file['name']));
 	$ext = end(explode('.', $filename));
 	/*echo $fileSize."<br>";
-	echo $db_type->max_size;
-	echo $fileType;*/
+	echo $db_type->max_size;*/
+	//echo $fileType;
 	//if (in_array($file["type"], $db_type->mime) &&
 	if (in_array($ext, $db_type->ext) &&in_array($fileType, $db_type->mime) &&
 		//$file["size"] < $db_type->max_size) {

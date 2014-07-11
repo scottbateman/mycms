@@ -67,6 +67,7 @@
 @define('L_INBOOK', 'In Book');
 @define('L_INCOLLECTION', 'In Collection');
 @define('L_INPROCEEDINGS', 'In Proceedings');
+@define('L_INWORKSHOPPROCEEDINGS', 'In Work Shop Proceedings');
 @define('L_MANUAL', 'Manual');
 @define('L_MASTERSTHESIS', 'Masters Thesis');
 @define('L_MISC', 'Misc');

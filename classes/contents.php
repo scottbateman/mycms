@@ -60,8 +60,8 @@ $g['content']['video'] = new video();
 
 class doc extends content {
 
-    public $ext      = array("pdf");
-    public $mime     = array("application/pdf");
+    public $ext      = array("pdf", "doc");
+    public $mime     = array("application/pdf", "application/msword");
     public $max_size = 10485760; // 10 * 1024 * 1024;
 
 	public $__table = 'mycms_doc';		   // table name
@@ -235,7 +235,7 @@ class publication extends content {
     public $publication_temp_secondarylink;    // string(300)
 
     public $field_type = array(
-        'publication_type'         => 'enum:article,book,booklet,conference,inbook,incollection,inproceedings,manual,mastersthesis,misc,phdthesis,proceedings,techreport,unpublished',
+        'publication_type'         => 'enum:article,book,booklet,conference,inbook,incollection,inproceedings,inworkshopproceedings,manual,mastersthesis,misc,phdthesis,proceedings,techreport,unpublished',
         'publication_title'        => 'string',
         'publication_booktitle'    => 'string',
         'publication_abstract'     => 'string',

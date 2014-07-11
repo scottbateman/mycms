@@ -98,7 +98,8 @@ if ($_GET['action'] == 'home') {
 	$publication = $g['content']['publication']->view('teaser', '', 'publication.publication_year DESC', '0,3');
 	if (!$publication['error'] && $publication['count'] > 0)
 		$g['smarty']->assign('publication', $publication);
-
+	$g['smarty']->assign('show_main_page_tiles', $g['show_main_page_tiles']);
+	$g['smarty']->assign('show_main_page_carousel', $g['show_main_page_carousel']);
 	$g['smarty']->assign('selectedmenu', 'Home');
 	$g['template'] = 'home';
 }

@@ -51,13 +51,14 @@
 				<option id="publication_type-5"   value="inbook"        {if "inbook"        == $publication.publication_type}selected{/if} >{t s='inbook'        m=0}</option>
 				<option id="publication_type-6"   value="incollection"  {if "incollection"  == $publication.publication_type}selected{/if} >{t s='incollection'  m=0}</option>
 				<option id="publication_type-7"   value="inproceedings" {if "inproceedings" == $publication.publication_type}selected{/if} >{t s='inproceedings' m=0}</option>
-				<option id="publication_type-8"   value="manual"        {if "manual"        == $publication.publication_type}selected{/if} >{t s='manual'        m=0}</option>
-				<option id="publication_type-9"   value="mastersthesis" {if "mastersthesis" == $publication.publication_type}selected{/if} >{t s='mastersthesis' m=0}</option>
-				<option id="publication_type-10"  value="misc"          {if "misc"          == $publication.publication_type}selected{/if} >{t s='misc'          m=0}</option>
-				<option id="publication_type-11"  value="phdthesis"     {if "phdthesis"     == $publication.publication_type}selected{/if} >{t s='phdthesis'     m=0}</option>
-				<option id="publication_type-12"  value="proceedings"   {if "proceedings"   == $publication.publication_type}selected{/if} >{t s='proceedings'   m=0}</option>
-				<option id="publication_type-13"  value="techreport"    {if "techreport"    == $publication.publication_type}selected{/if} >{t s='techreport'    m=0}</option>
-				<option id="publication_type-14"  value="unpublished"   {if "unpublished"   == $publication.publication_type}selected{/if} >{t s='unpublished'   m=0}</option>
+				<option id="publication_type-8"   value="inworkshopproceedings" {if "inworkshopproceedings" == $publication.publication_type}selected{/if} >{t s='inworkshopproceedings' m=0}</option>
+				<option id="publication_type-9"   value="manual"        {if "manual"        == $publication.publication_type}selected{/if} >{t s='manual'        m=0}</option>
+				<option id="publication_type-10"   value="mastersthesis" {if "mastersthesis" == $publication.publication_type}selected{/if} >{t s='mastersthesis' m=0}</option>
+				<option id="publication_type-11"  value="misc"          {if "misc"          == $publication.publication_type}selected{/if} >{t s='misc'          m=0}</option>
+				<option id="publication_type-12"  value="phdthesis"     {if "phdthesis"     == $publication.publication_type}selected{/if} >{t s='phdthesis'     m=0}</option>
+				<option id="publication_type-13"  value="proceedings"   {if "proceedings"   == $publication.publication_type}selected{/if} >{t s='proceedings'   m=0}</option>
+				<option id="publication_type-14"  value="techreport"    {if "techreport"    == $publication.publication_type}selected{/if} >{t s='techreport'    m=0}</option>
+				<option id="publication_type-15"  value="unpublished"   {if "unpublished"   == $publication.publication_type}selected{/if} >{t s='unpublished'   m=0}</option>
 			</select>
 		</div>
 
@@ -320,7 +321,7 @@
 
 		<div id="doc-container" class="field f_100">
 			<label for="doc" class="label">
-				Upload document<div class="smalltext">(.pdf)</div>
+				Upload document<div class="smalltext">(.pdf, .doc)</div>
 			</label>
 			<div class="original_div">
 				<input type="file" name="doc[]"/>

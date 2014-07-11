@@ -41,6 +41,7 @@
 	{if !empty($p.publication_toappear) and not $p.publication_toappear}&nbsp;To appear.{/if}
 	{if !empty($p.publication_note)}&nbsp;{$p.publication_note}.{/if}
 	{if !empty($p.publication_doi_number)}<a hidden class="doi_number" href="http://dx.doi.org/{$p.publication_doi_number}">&nbsp;doi:{$p.publication_doi_number}</a>{/if}
+	{if !empty($p.publication_url)}<a hidden class="publication_url" href="{$p.publication_url}">&nbsp;URL:{$p.publication_url}</a>{/if}
 </div>
 {/strip}
 

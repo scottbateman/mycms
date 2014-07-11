@@ -55,6 +55,8 @@ $g['default_page_to_display'] = "templates/index.tpl";
 $g['lang']                    = $g['default_lang'];
 $g['DB_DataObject']           = $config['DB_DataObject'];
 
+$g['show_main_page_tiles']    = $config['MAIN_PAGE']['show_main_page_tiles'];
+$g['show_main_page_carousel'] = $config['MAIN_PAGE']['show_main_page_carousel'];
 //-----------------------------------------------------------------------------
 
 include_once("lang/{$g['lang']}.php");

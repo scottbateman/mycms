@@ -69,13 +69,14 @@ year:         The year of publication (or, if unpublished, the year of creation)
 				<option id="publication_type-5"   value="inbook"        >{t s='inbook'        m=0}</option>
 				<option id="publication_type-6"   value="incollection"  >{t s='incollection'  m=0}</option>
 				<option id="publication_type-7"   value="inproceedings" >{t s='inproceedings' m=0}</option>
-				<option id="publication_type-8"   value="manual"        >{t s='manual'        m=0}</option>
-				<option id="publication_type-9"   value="mastersthesis" >{t s='mastersthesis' m=0}</option>
-				<option id="publication_type-10"  value="misc"          >{t s='misc'          m=0}</option>
-				<option id="publication_type-11"  value="phdthesis"     >{t s='phdthesis'     m=0}</option>
-				<option id="publication_type-12"  value="proceedings"   >{t s='proceedings'   m=0}</option>
-				<option id="publication_type-13"  value="techreport"    >{t s='techreport'    m=0}</option>
-				<option id="publication_type-14"  value="unpublished"   >{t s='unpublished'   m=0}</option>
+				<option id="publication_type-8"   value="inworkshopproceedings" >{t s='inworkshopproceedings' m=0}</option>
+				<option id="publication_type-9"   value="manual"        >{t s='manual'        m=0}</option>
+				<option id="publication_type-10"   value="mastersthesis" >{t s='mastersthesis' m=0}</option>
+				<option id="publication_type-11"  value="misc"          >{t s='misc'          m=0}</option>
+				<option id="publication_type-12"  value="phdthesis"     >{t s='phdthesis'     m=0}</option>
+				<option id="publication_type-13"  value="proceedings"   >{t s='proceedings'   m=0}</option>
+				<option id="publication_type-14"  value="techreport"    >{t s='techreport'    m=0}</option>
+				<option id="publication_type-15"  value="unpublished"   >{t s='unpublished'   m=0}</option>
 			</select>
 		</div>
 
@@ -293,7 +294,7 @@ year:         The year of publication (or, if unpublished, the year of creation)
 
 		<div id="doc-container" class="field f_100">
 			<label for="doc" class="label">
-				Upload document<div class="smalltext">(.pdf)</div>
+				Upload document<div class="smalltext">(.pdf, .doc)</div>
 			</label>
 			<div class="original_div">
 				<input type="file" name="doc[]"/>
