@@ -615,8 +615,11 @@ else if (checkparams(array(
 	} else {
 		$g['error']->push("No $ct found with id " . $id, 'error');
 	}
-
-	$g['template'] = $ct . '_admin_create';
+	if($g['user']['is_admin']){
+		$g['template'] = $ct . '_admin_create';
+	}else{
+		header('Location: '.$g['weburl'].'logout');
+	}
 }
 
 //************************************************************************************
