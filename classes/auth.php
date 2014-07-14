@@ -73,7 +73,7 @@ class auth {
            
             //return "http://localhost/login";
             if(isset($_SESSION['userid'])){
-                
+
                 return $_SESSION['userid'];
             }
             else
@@ -97,7 +97,7 @@ class auth {
         else if ('native' == $g['auth_method']) {
             unset($_SESSION['userid']);
             unset($_SESSION['username']);
-            $g['user']['id'] = '';
+            $g['user']['id'] = null;
             $g['user']['is_authenticated'] = false;
             $g['user']['is_admin'] = false;
             //return "http://localhost/mycms";

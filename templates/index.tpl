@@ -32,14 +32,21 @@
     <link rel="stylesheet" href="{$weburl}static/css/admin.css"   type="text/css" media="all"/>
 	<link rel="stylesheet" href="{$weburl}static/css/print.css"   type="text/css" media="print">
 	
-    <script src="//code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript" src="{$weburl}static/js/jquery.tools.js"></script>
     <script type="text/javascript" src="{$weburl}static/js/jquery.uniform.min.js"></script>
     <script type="text/javascript">var weburl = '{$weburl}';</script>
     <script type="text/javascript" src="{$weburl}static/js/main.js"></script>
 
-	<link rel="shortcut icon" href="http://hci.usask.ca/static/images/favicon.png">
+	<link href="{$weburl}static/css/bootstrap.css" rel="stylesheet">
+	<link href="{$weburl}static/css/docs.css" rel="stylesheet">  
+	<link href="{$weburl}static/css/carousel.css" rel="stylesheet">
+	<script type="text/javascript" src="{$weburl}static/js/bootstrap.js"></script>
+
+
+	<link rel="shortcut icon" href="{$weburl}static/images/favicon.png">
 	<!--[if lte IE 6]>
 		<link type="text/css" rel="stylesheet" href="/ie.css" media="all" />
 	<![endif]-->

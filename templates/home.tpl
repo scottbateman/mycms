@@ -1,9 +1,9 @@
 
 {*---------------------------------------------------------------------------*}
-<link href="static/css/bootstrap.css" rel="stylesheet">
+<!--<link href="static/css/bootstrap.css" rel="stylesheet">
 <link href="static/css/docs.css" rel="stylesheet">  
 <link href="static/css/carousel.css" rel="stylesheet">
-<script src="static/js/bootstrap.js"></script>
+<script src="static/js/bootstrap.js"></script>-->
 <!-- Image display -->
 {if ($show_main_page_tiles==true)}
 <div id="imagedisplay">

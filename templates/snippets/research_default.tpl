@@ -8,13 +8,15 @@
 		<a class="edit-node" href='{gl url="admin/research/view"}/{$research.research_id}'>edit</a>
 	{/if}
 	<!-- Authenticated user can only edit the research that reference to him. -->
-	{assign var=people value=$research.people}
-	{for $i=0; $i < $people.count; $i++}
-		{assign var=ppl value=$people.rows[$i]}
-		{if $ppl.people_nsid == $g['user']['id']}
-			<a class="edit-node" href='{gl url="admin/research/view"}/{$research.research_id}'>edit</a>
-		{/if}
-	{/for}
+	{if $g['user']['id'] !== null }
+		{assign var=people value=$research.people}
+		{for $i=0; $i < $people.count; $i++}
+			{assign var=ppl value=$people.rows[$i]}
+			{if $ppl.people_nsid === $g['user']['id']}
+				<a class="edit-node" href='{gl url="admin/research/view"}/{$research.research_id}'>edit</a>
+			{/if}
+		{/for}
+	{/if}
 	<h2>
 		<span style="color: gray">{t s=Project m=0}:</span>
 		{$research.research_title}
