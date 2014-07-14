@@ -3,10 +3,18 @@
 <script type="text/javascript" src="{$weburl}static/js/publication_default.js"></script>
 {if isset($publication)}
 <div class="publication-default" data-type='publication' data-id={$publication.publication_id}>
+	<!-- Admin could edit everything -->
 	{if isset($user) and $user.is_admin}
 		<a class="edit-node" href='{gl url="admin/publication/view"}/{$publication.publication_id}'>edit</a>
 	{/if}
-
+	<!-- Authenticated user can only edit the publication that reference to him. -->
+	{assign var=people value=$publication.people}
+	{for $i=0; $i < $people.count; $i++}
+		{assign var=ppl value=$people.rows[$i]}
+		{if $ppl.people_nsid == $g['user']['id']}
+			<a class="edit-node" href='{gl url="admin/publication/view"}/{$publication.publication_id}'>edit</a>
+		{/if}
+	{/for}
 	<h2>
 		<span style="color: gray">{t s=Publication m=0}:</span>
 		{$publication.publication_title}

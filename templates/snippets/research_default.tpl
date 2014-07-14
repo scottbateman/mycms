@@ -3,10 +3,18 @@
 
 {if isset($research)}
 <div class="research-default" data-type='research' data-id={$research.research_id}>
+	<!-- Admin could edit everything -->
 	{if isset($user) and $user.is_admin}
 		<a class="edit-node" href='{gl url="admin/research/view"}/{$research.research_id}'>edit</a>
 	{/if}
-
+	<!-- Authenticated user can only edit the research that reference to him. -->
+	{assign var=people value=$research.people}
+	{for $i=0; $i < $people.count; $i++}
+		{assign var=ppl value=$people.rows[$i]}
+		{if $ppl.people_nsid == $g['user']['id']}
+			<a class="edit-node" href='{gl url="admin/research/view"}/{$research.research_id}'>edit</a>
+		{/if}
+	{/for}
 	<h2>
 		<span style="color: gray">{t s=Project m=0}:</span>
 		{$research.research_title}

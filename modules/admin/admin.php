@@ -19,13 +19,15 @@ if (!$g['user']['is_authenticated'])
 	system::redirect(system::genlink(''));
 }*/
 
-
+// Set the default page of admin interface
 if(!isset($_GET['content'])) $_GET['content'] = 'people';
+// Set the content type
 $ct = strtolower($_GET['content']);
+// If the user is an admin, load the create pages of any content type
 if($g['user']['is_admin']){
 	$g['template'] = $ct . '_admin_create';
-}else if($g['user']['is_authenticated']&&!$g['user']['is_admin']){
-	if($ct === 'people'){
+}else {//if the user is an authenticated user, 
+	if($ct === 'people'){// load his information editing page as people page.
 		?>
 		<style type="text/css">
 			#people-container{
@@ -37,7 +39,17 @@ if($g['user']['is_admin']){
 		$r = $g['content'][$ct]->view('default', "$ct.{$ct}_nsid = \"$id\"");
 		$g['smarty']->assign($ct, $r['rows'][0]);
 		$g['template'] = $ct . '_admin_edit';
-	}else{
+	}else{// Load research and publication creating page
+		?>
+		<style type="text/css">
+			#research-container{
+				display:none;
+			}
+			#publication-container{
+				display:none;
+			}
+		</style>
+		<?php
 		$g['template'] = $ct . '_admin_create';
 	}
 }

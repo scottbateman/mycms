@@ -72,8 +72,10 @@ class auth {
         else if ('native' == $g['auth_method']) {
            
             //return "http://localhost/login";
-            if(isset($_SESSION['userid']))
+            if(isset($_SESSION['userid'])){
+                
                 return $_SESSION['userid'];
+            }
             else
                 return null;
         }
