@@ -33,6 +33,12 @@ if($g['user']['is_admin']){
 			#people-container{
 				display:none;
 			}
+			#people_role-container{
+				display: none;
+			}
+			#people_group-container{
+				display:none;
+			}
 		</style>
 		<?php
 		$id = $g['user']['id'];
